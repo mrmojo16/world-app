@@ -1,0 +1,14 @@
+echo "# Archivos del sistema" > .gitignore
+echo ".DS_Store" >> .gitignore
+echo "Thumbs.db" >> .gitignore
+echo "" >> .gitignore
+echo "# Archivos de IDE" >> .gitignore
+echo ".vscode/" >> .gitignore
+echo ".idea/" >> .gitignore
+echo "" >> .gitignore
+echo "# Configuración local (NO SUBIR)" >> .gitignore
+echo "config/database.php" >> .gitignore
+echo "" >> .gitignore
+echo "# Archivos temporales" >> .gitignore
+echo "*.log" >> .gitignore
+echo "*.tmp" >> .gitignore
