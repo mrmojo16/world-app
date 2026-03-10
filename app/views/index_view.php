@@ -3,13 +3,13 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>World Population Viewer</title>
+    <title>World-app</title>
     <link rel="stylesheet" href="assets/css/style.css">
 </head>
 <body>
     <div class="container">
         <header>
-            <h1>🌍 World Population Viewer</h1>
+            <h1>🌍 WORLD-APP</h1>
             <p class="subtitle">Selecciona un país para ver sus ciudades y población</p>
         </header>
         
@@ -69,7 +69,7 @@
         </main>
         
         <footer>
-            <p>© 2024 - Prueba Técnica Analista de Soporte Nivel 1</p>
+            <p>© 2026 - Prueba Técnica Analista de Soporte Nivel 1</p>
         </footer>
     </div>
     
