@@ -1,0 +1,250 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+    min-height: 100vh;
+    padding: 20px;
+}
+
+.container {
+    max-width: 1200px;
+    margin: 0 auto;
+    background: white;
+    border-radius: 20px;
+    box-shadow: 0 20px 60px rgba(0,0,0,0.3);
+    overflow: hidden;
+}
+
+header {
+    background: #2c3e50;
+    color: white;
+    padding: 30px;
+    text-align: center;
+}
+
+header h1 {
+    font-size: clamp(1.5rem, 5vw, 2.5rem);
+    margin-bottom: 10px;
+}
+
+.subtitle {
+    font-size: clamp(0.9rem, 3vw, 1.1rem);
+    opacity: 0.9;
+}
+
+main {
+    padding: 30px;
+}
+
+.search-section {
+    margin-bottom: 30px;
+}
+
+.search-section label {
+    display: block;
+    margin-bottom: 10px;
+    font-weight: 600;
+    color: #34495e;
+    font-size: 1.1rem;
+}
+
+.country-select {
+    width: 100%;
+    padding: 15px;
+    font-size: 1rem;
+    border: 2px solid #e0e0e0;
+    border-radius: 10px;
+    background-color: white;
+    cursor: pointer;
+    transition: all 0.3s;
+}
+
+.country-select:hover {
+    border-color: #667eea;
+    box-shadow: 0 5px 15px rgba(102, 126, 234, 0.2);
+}
+
+.country-select:focus {
+    outline: none;
+    border-color: #764ba2;
+    box-shadow: 0 5px 15px rgba(118, 75, 162, 0.2);
+}
+
+.loading {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    padding: 40px;
+}
+
+.spinner {
+    width: 50px;
+    height: 50px;
+    border: 5px solid #f3f3f3;
+    border-top: 5px solid #667eea;
+    border-radius: 50%;
+    animation: spin 1s linear infinite;
+    margin-bottom: 15px;
+}
+
+@keyframes spin {
+    0% { transform: rotate(0deg); }
+    100% { transform: rotate(360deg); }
+}
+
+.stats-card {
+    background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+    color: white;
+    padding: 20px;
+    border-radius: 10px;
+    margin: 20px 0;
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+    gap: 15px;
+}
+
+.stats-card p {
+    font-size: 1rem;
+}
+
+.stats-card strong {
+    display: block;
+    font-size: 1.2rem;
+    margin-top: 5px;
+}
+
+.table-container {
+    overflow-x: auto;
+    border-radius: 10px;
+    box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+}
+
+table {
+    width: 100%;
+    border-collapse: collapse;
+    background: white;
+    min-width: 600px;
+}
+
+th {
+    background: #2c3e50;
+    color: white;
+    padding: 15px;
+    font-weight: 600;
+    font-size: 0.9rem;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+}
+
+td {
+    padding: 12px 15px;
+    border-bottom: 1px solid #e0e0e0;
+    color: #34495e;
+}
+
+tr:hover {
+    background-color: #f8f9fa;
+}
+
+.population {
+    font-family: 'Courier New', monospace;
+    font-weight: 600;
+    color: #2c3e50;
+}
+
+.scale {
+    font-weight: bold;
+    text-align: center;
+    padding: 8px 12px;
+    border-radius: 20px;
+}
+
+.scale-high {
+    background-color: #27ae60;
+    color: white;
+}
+
+.scale-medium {
+    background-color: #f39c12;
+    color: white;
+}
+
+.scale-low {
+    background-color: #e74c3c;
+    color: white;
+}
+
+.error {
+    background-color: #fee;
+    color: #c0392b;
+    padding: 20px;
+    border-radius: 10px;
+    text-align: center;
+    border: 2px solid #e74c3c;
+    margin: 20px 0;
+}
+
+.text-center {
+    text-align: center;
+    padding: 30px !important;
+    color: #7f8c8d;
+}
+
+footer {
+    background: #34495e;
+    color: white;
+    text-align: center;
+    padding: 20px;
+    font-size: 0.9rem;
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+    main {
+        padding: 20px;
+    }
+    
+    th, td {
+        padding: 10px;
+        font-size: 0.9rem;
+    }
+    
+    .stats-card {
+        grid-template-columns: 1fr;
+        gap: 10px;
+    }
+    
+    .stats-card p {
+        margin: 5px 0;
+    }
+}
+
+@media (max-width: 480px) {
+    body {
+        padding: 10px;
+    }
+    
+    header {
+        padding: 20px;
+    }
+    
+    main {
+        padding: 15px;
+    }
+    
+    th, td {
+        padding: 8px;
+        font-size: 0.8rem;
+    }
+    
+    .scale {
+        padding: 4px 8px;
+        font-size: 0.8rem;
+    }
+}
