@@ -25,7 +25,7 @@ document.addEventListener('DOMContentLoaded', function() {
         selectedCountrySpan.textContent = countryName;
         
         // Petición AJAX
-        fetch(`index.php?action=getCities&country_code=\${countryCode}`)
+        fetch(`index.php?action=getCities&country_code=${countryCode}`)
             .then(response => {
                 if (!response.ok) throw new Error('Error en la respuesta');
                 return response.json();
@@ -43,10 +43,10 @@ document.addEventListener('DOMContentLoaded', function() {
                     let html = '';
                     data.data.forEach((city, index) => {
                         html += `<tr>
-                            <td>\${index + 1}</td>
-                            <td>\${city.name}</td>
-                            <td class="population">\${city.population}</td>
-                            <td class="scale scale-\${city.scale_class}">\${city.scale}</td>
+                            <td>${index + 1}</td>
+                            <td>${city.name}</td>
+                            <td class="population">${city.population}</td>
+                            <td class="scale scale-${city.scale_class}">${city.scale}</td>
                         </tr>`;
                     });
                     

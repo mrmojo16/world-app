@@ -1,24 +1,29 @@
-@"
-<?php
+﻿<?php
+// PUNTO DE ENTRADA PRINCIPAL DE LA APLICACIÓN
+// Todas las peticiones pasan por aquí
+
+// Cargar el controlador principal
 require_once 'app/controllers/CityController.php';
 
-\$controller = new CityController();
+// Crear instancia del controlador
+$controller = new CityController();
 
-\$action = isset(\$_GET['action']) ? \$_GET['action'] : 'index';
+// Obtener la acción solicitada (por defecto 'index')
+$action = isset($_GET['action']) ? $_GET['action'] : 'index';
 
-switch(\$action) {
+// Enrutador simple
+switch($action) {
     case 'getCities':
-        \$controller->getCities();
+        $controller->getCities();
         break;
     case 'searchCountry':
-        \$controller->searchCountry();
+        $controller->searchCountry();
         break;
     case 'topCities':
-        \$controller->topCities();
+        $controller->topCities();
         break;
     default:
-        \$controller->index();
+        $controller->index();
         break;
 }
 ?>
-"@ | Out-File -FilePath index.php -Encoding UTF8

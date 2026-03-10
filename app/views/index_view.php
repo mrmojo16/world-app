@@ -1,5 +1,4 @@
-@"
-<!DOCTYPE html>
+﻿<!DOCTYPE html>
 <html lang="es">
 <head>
     <meta charset="UTF-8">
@@ -19,9 +18,15 @@
                 <label for="country-select">🌎 País:</label>
                 <select id="country-select" class="country-select" required>
                     <option value="">-- Selecciona un país --</option>
-                    <?php foreach(\$countries as \$country): ?>
-                        <option value="<?php echo htmlspecialchars(\$country['Code']); ?>">
-                            <?php echo htmlspecialchars(\$country['Name']); ?>
+                    <?php
+                    // Cargar países desde el modelo
+                    require_once 'app/models/CountryModel.php';
+                    $countryModel = new CountryModel();
+                    $countries = $countryModel->getAll();
+                    foreach($countries as $country):
+                    ?>
+                        <option value="<?php echo htmlspecialchars($country['Code']); ?>">
+                            <?php echo htmlspecialchars($country['Name']); ?>
                         </option>
                     <?php endforeach; ?>
                 </select>
@@ -71,4 +76,3 @@
     <script src="assets/js/script.js"></script>
 </body>
 </html>
-"@ | Out-File -FilePath app\views\index_view.php -Encoding UTF8
