@@ -1,4 +1,6 @@
 document.addEventListener('DOMContentLoaded', function() {
+    console.log("✅ Script cargado con Bootstrap");
+    
     const countrySelect = document.getElementById('country-select');
     const loadingDiv = document.getElementById('loading');
     const resultsDiv = document.getElementById('results');
@@ -19,7 +21,7 @@ document.addEventListener('DOMContentLoaded', function() {
         }
         
         // Mostrar loading
-        loadingDiv.style.display = 'flex';
+        loadingDiv.style.display = 'block';
         resultsDiv.style.display = 'none';
         errorDiv.style.display = 'none';
         selectedCountrySpan.textContent = countryName;
@@ -33,27 +35,31 @@ document.addEventListener('DOMContentLoaded', function() {
             .then(data => {
                 loadingDiv.style.display = 'none';
                 
-                if (data.success && data.data.length > 0) {
+                if (data.success && data.data && data.data.length > 0) {
                     // Actualizar estadísticas
                     totalCitiesSpan.textContent = data.total;
                     maxCitySpan.textContent = data.max_city;
                     maxPopulationSpan.textContent = data.max_population;
                     
-                    // Construir tabla
+                    // Construir tabla con Bootstrap
                     let html = '';
                     data.data.forEach((city, index) => {
+                        let scaleClass = 'scale-low';
+                        if (city.scale_class === 'high') scaleClass = 'scale-high';
+                        else if (city.scale_class === 'medium') scaleClass = 'scale-medium';
+                        
                         html += `<tr>
-                            <td>${index + 1}</td>
+                            <td class="fw-bold">${index + 1}</td>
                             <td>${city.name}</td>
-                            <td class="population">${city.population}</td>
-                            <td class="scale scale-${city.scale_class}">${city.scale}</td>
+                            <td class="fw-semibold">${city.population}</td>
+                            <td><span class="badge ${scaleClass} p-2 w-100">${city.scale}</span></td>
                         </tr>`;
                     });
                     
                     citiesTbody.innerHTML = html;
                     resultsDiv.style.display = 'block';
                 } else {
-                    citiesTbody.innerHTML = '<tr><td colspan="4" class="text-center">No hay ciudades para mostrar</td></tr>';
+                    citiesTbody.innerHTML = '<tr><td colspan="4" class="text-center text-muted py-4"><i class="bi bi-inbox"></i> No hay ciudades para mostrar</td></tr>';
                     resultsDiv.style.display = 'block';
                 }
             })
@@ -61,6 +67,7 @@ document.addEventListener('DOMContentLoaded', function() {
                 console.error('Error:', error);
                 loadingDiv.style.display = 'none';
                 errorDiv.style.display = 'block';
+                errorDiv.innerHTML = `<i class="bi bi-exclamation-triangle"></i> Error: ${error.message}`;
             });
     });
 });
